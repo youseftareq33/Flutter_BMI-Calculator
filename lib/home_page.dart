@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:bmi_calculator/result_page.dart';
 import 'package:flutter/material.dart';
 

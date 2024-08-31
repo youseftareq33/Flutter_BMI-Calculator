@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class ResultPage extends StatelessWidget {
+  bool isMale;
 
   double height;
   double weight;
 
-  ResultPage({super.key, required this.height, required this.weight});
+  ResultPage({super.key, required this.isMale ,required this.height, required this.weight});
 
   @override
   Widget build(BuildContext context) {
@@ -36,20 +37,56 @@ class ResultPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Result is: "+"${bmi_res.toStringAsFixed(2)}"),
-            Text("$bmi_state"),
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.refresh),
-            ),
-          ],
+      backgroundColor: isMale ? Colors.blue : Colors.red,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                  "BMI Result: ",
+                  style: TextStyle(color: Colors.white, fontSize: 29),
+                ),
+                
+                Text(
+                  "${bmi_res.toStringAsFixed(2)}",
+                  style: TextStyle(color: Colors.white, fontSize: 36),
+                ),
+                  ],
+                ),
+              ),
+              
+
+              SizedBox(
+                height: 16,
+              ),
+
+              Text(
+                "$bmi_state",
+                style: TextStyle(color: Colors.white, fontSize: 29),
+              ),
+
+               SizedBox(
+                height: 40,
+              ),
+
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.refresh,
+                  color: Colors.white,
+                  size: 36,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
